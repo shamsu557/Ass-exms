@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exam Score</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Add your CSS styles for the score page here */
+        /* Example styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .score-section {
+            margin-bottom: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .finished-exam {
+            width: 100%;
+            height: auto;
+            opacity: 0.4;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center bg-light text-secondary">Exam Results</h1>
+        <div class="row">
+            <div class="col-md-6 bg-light ">
+                <!-- Transparent finished exam image -->
+                <img src="examfinished.jpg" alt="Finished Exam Image" class="finished-exam">
+            </div>
+            <div class="col-md-6">
+                <!-- Exam score details -->
+                <div class="score-section">
+                    <h2 class="text-center bg-light text-success mt-2">You're Almost Done!</h2>
+                    <p id="message" class="text-center"></p>
+                    <p><strong>Student ID:</strong> <span id="studentId"></span></p>
+                    <p><strong>Full Name:</strong> <span id="fullName"></span></p>
+                    <p><strong>Exam ID:</strong> <span id="examId"></span></p>
+                </div>
+                <div class="score-section">
+                    <h2>Scores</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Section</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scoreTableBody"></tbody>
+                        <tfoot>
+                            <tr>
+                                <td><strong>Total Score:</strong></td>
+                                <td><span id="totalScore"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Average Score:</strong></td>
+                                <td><span id="averageScore"></span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and your script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+     // Retrieve URL parameters
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+// Function to get max score based on section
+function getMaxScore(section) {
+    switch (section) {
+        case 'wordProcessing':
+        case 'excel':
+            return 100;
+        case 'powerPoint':
+        case 'networking':
+            return 100;
+        case 'access':
+            return 100;
+        default:
+            return 0;
+    }
+}
+
+// Retrieve and display student information and scores
+const studentId = urlParams.get('idNumber');
+const fullName = urlParams.get('fullName');
+const examId = urlParams.get('examId');
+
+const sectionScores = {
+    wordProcessing: parseInt(urlParams.get('wordProcessingScore')) || 0,
+    excel: parseInt(urlParams.get('excelScore')) || 0,
+    powerPoint: parseInt(urlParams.get('powerPointScore')) || 0,
+    access: parseInt(urlParams.get('accessScore')) || 0,
+    networking: parseInt(urlParams.get('networkingScore')) || 0
+};
+
+// Display student information
+document.getElementById('studentId').textContent = studentId || 'N/A';
+document.getElementById('fullName').textContent = fullName || 'N/A';
+document.getElementById('examId').textContent = examId || 'N/A';
+
+// Display scores for individual sections and calculate total score
+let totalScore = 0;
+const numberOfSections = Object.keys(sectionScores).length;
+
+for (const section in sectionScores) {
+    const row = document.createElement('tr');
+    const cell1 = document.createElement('td');
+    const cell2 = document.createElement('td');
+    const maxScore = getMaxScore(section);
+
+    cell1.textContent = section;
+    //cell2.textContent = `${sectionScores[section]} out of ${maxScore}`;
+    //uncomment the above if you want display the score out of the maximum score(100 i have being giving in the return) and comment below code
+    cell2.textContent = `${sectionScores[section]}`;
+    row.appendChild(cell1);
+    row.appendChild(cell2);
+    scoreTableBody.appendChild(row);
+
+    // Calculate total score by summing section scores
+    totalScore += sectionScores[section];
+}
+
+// Display total score
+document.getElementById('totalScore').textContent = totalScore;
+
+// Calculate and display average score
+const averageScore = totalScore / numberOfSections;
+document.getElementById('averageScore').textContent = isNaN(averageScore) ? 'N/A' : averageScore.toFixed(2);
+// Add this code after calculating the average score
+const messageElement = document.getElementById('message');
+    if (!isNaN(averageScore)) {
+        if (averageScore >= 35) {
+            messageElement.textContent = `Congratulations, ${fullName}! Your certificate will soon be ready. Thank you!`;
+        } else {
+            messageElement.textContent = `Sorry, ${fullName}, your results indicate you should try again later.`;
+        }
+    } else {
+        messageElement.textContent = `Average score calculation failed for ${fullName}. Please try again later.`;
+    }
+</script>
+  
+</body>
+</html>

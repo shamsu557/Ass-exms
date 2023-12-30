@@ -1,0 +1,2502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Appreciation Examination</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .option {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        #submitBtn {
+            display: block;
+            margin: 20px auto;
+        }
+             /* Center the container */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; /* Adjust this if needed */
+}
+
+/* Style the text */
+#date{
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px;
+}
+             
+        #timer {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #idForm {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #startBtn {
+            margin-top: 10px;
+            margin-left:110px;
+        }
+
+        /* Additional CSS for student ID display */
+        #fullNameDisplay{
+            position: absolute;
+            top: 0%;
+            right: 2%;
+            font-weight: bold;
+            position:fixed;
+        }
+        /* Additional CSS for Student Name display */
+        #studentIdDisplay {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    font-weight: bold;
+    position:fixed;
+}
+#header {
+    background: #fff;
+    transition: all 0.5s;
+    z-index: 997;
+    padding: 15px 0;
+    box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);
+  }
+  #header .logo {
+    font-size: 10px;
+    margin: auto;
+    padding: 0;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+  }
+  #header .logo a {
+    color: rgb(62, 121, 165);
+    text-decoration: none;
+    margin: auto;
+  }
+  
+  #header .logo img {
+    max-height: 40px;
+  }
+  .sname h1{
+    text-align: center;
+    color:#2a4c5c;
+    padding-top: 2%;
+    margin-top: 1%;
+  }
+  #startExcelButton{
+    margin-left:42%;
+  }
+  .start-exam{
+    height: auto;
+    opacity: 0.4;
+  }
+    </style>
+</head>
+<body>
+    <div id="intro" class="sname text-center mt-4">
+        <h1>Ahmad Sufi Sani ICT Initiative Center <br> and Glaxy Warriors</h1>
+        <p id="date" class="text-center "></p>
+    </div>
+<div class="container-fluid bg-light mt-4 w-75 ml-auto">
+    <h1 class="text-center text-primary">Computer Appreciation Examination</h1>
+    <div  class="row">
+        <div id="start" class="col-md-6 mt-4">
+            <!-- Image or content for starting exam -->
+            <img src="startexam.jpg" alt="Start Exam Image" class="img-fluid start-exam w-100">
+        </div>
+        <div id="idForm" class="col-md-6  text-center mt-auto">
+            <!-- Exam form -->
+                <form>
+                    <div class="form-group row justify-content-center">
+                        <label for="fullName" class="col-sm-3 col-form-label">Enter Your Name:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fullName" required>
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="idNumber" class="col-sm-3 col-form-label">Enter your ID number:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="idNumber" required>
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="examId" class="col-sm-3 col-form-label">Enter the Exam ID:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="examId" required>
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-sm-8">
+                            <button type="button" class="btn btn-success btn-block w-50 ml-auto" onclick="startExam()">Start Exam</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        <div  id="examContainer" class="container d-none">
+            <div id="timer" class="text-center">120:00</div>
+            <form id="examForm">
+            <div id="wordprocessing" class="container">
+                <h3 class="text-center">Word processing</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>1. What is the default file extension for a Word document?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q1" value="a">A. .docx</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q1" value="b">B. .txt</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q1" value="c">C. .pdf</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q1" value="d">D. .xlsx</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>2. Which feature allows you to add predefined elements like cover pages and headers in Word?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q2" value="a">A. Word Art</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q2" value="b">B. Quick Parts</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q2" value="c">C. SmartArt</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>3. How can you insert a page break in a Word document?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q3" value="a">A. Ctrl + Enter</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q3" value="b">B. Shift + Enter</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q3" value="c">C. Alt + Enter</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>4. What is the function of the 'Find and Replace' tool in Word?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q4" value="a">A. To search for specific text and replace it with another</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q4" value="b">B. To format the entire document</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q4" value="c">C. To spell-check the document</label>
+                                </li>
+                            </ul>
+                    </div>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>5. Which ribbon tab contains options related to formatting text in Word?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q5" value="a">A. Home</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q5" value="b">B. Insert</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q5" value="c">C. Review</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>6. How can you create a numbered list in Microsoft Word?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q6" value="a">A. Click on the Numbered List button in the Paragraph group</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q6" value="b">B. Use the Tab key</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q6" value="c">C. Right-click and select 'Numbered List'</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>7. What is the purpose of the 'Page Layout' tab in Word?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q7" value="a">A. To adjust page margins, orientation, and size</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q7" value="b">B. To add hyperlinks to the document</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q7" value="c">C. To create tables and charts</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>8. Which feature in Word allows you to preview how your document will look when printed?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q8" value="a">A. Print Layout View</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q8" value="b">B. Web Layout View</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q8" value="c">C. Read Mode</label>
+                                </li>
+                            </ul>
+                        </div></div></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>9. Which keyboard shortcut is used to undo the last action in Microsoft Word?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q9" value="a">A. Ctrl + Z</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q9" value="b">B. Ctrl + Y</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q9" value="c">C. Ctrl + X</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>10. How can you change the line spacing in a Word document?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q10" value="a">A. Using the Line Spacing button in the Paragraph group</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q10" value="b">B. Adjusting font size</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q10" value="c">C. Right-clicking and selecting 'Line Spacing'</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>11. Which function in Word allows you to insert a pre-designed document cover page?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q11" value="a">A. Page Break</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q11" value="b">B. Cover Page</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q11" value="c">C. Header & Footer</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>12. What is the purpose of the 'Thesaurus' feature in Microsoft Word?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q12" value="a">A. To provide alternative word choices or synonyms</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q12" value="b">B. To check document spelling</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q12" value="c">C. To change document language</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>13. How can you create a bulleted list in Microsoft Word?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q13" value="a">A. Click on the Bulleted List button in the Paragraph group</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q13" value="b">B. Use the Spacebar key</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q13" value="c">C. Right-click and select 'Bulleted List'</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>14. Which view in Word allows you to see how your document will appear when printed?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q14" value="a">A. Print Layout View</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q14" value="b">B. Web Layout View</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q14" value="c">C. Draft View</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>15. How can you insert a table in a Word document?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q15" value="a">A. Using the 'Table' option in the Insert tab</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q15" value="b">B. Pressing Ctrl + T</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q15" value="c">C. Right-click and select 'Table'</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>16. What does the 'Find and Replace' function in Word allow you to do?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q16" value="a">A. Search for specific text and replace it with another</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q16" value="b">B. Format text color and size</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q16" value="c">C. Insert footnotes</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>17. How can you add a header or footer to a Word document?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q17" value="a">A. Using the 'Insert' tab and selecting 'Header' or 'Footer'</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q17" value="b">B. Double-clicking at the top or bottom of the page</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q17" value="c">C. Right-clicking and choosing 'Add Header' or 'Add Footer'</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>18. How can you change the orientation of a page in Word?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q18" value="a">A. Using the 'Orientation' option in the Layout tab</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q18" value="b">B. Right-clicking and selecting 'Page Orientation'</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q18" value="c">C. Pressing Ctrl + P</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>19. How can you insert a hyperlink in a Word document?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q19" value="a">A. Using the 'Hyperlink' button in the Insert tab</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q19" value="b">B. Pressing Ctrl + H</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q19" value="c">C. Right-clicking and selecting 'Insert Hyperlink'</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>20. What is the purpose of the 'Word Count' feature in Microsoft Word?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q20" value="a">A. To count the number of words in a document</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q20" value="b">B. To change document language</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q20" value="c">C. To format text alignment</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>21. How can you change the line spacing in a Word document?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q21" value="a">A. Using the 'Line Spacing' option in the Home tab</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q21" value="b">B. Right-clicking and selecting 'Line Spacing'</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q21" value="c">C. Pressing Ctrl + L</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>22. How can you insert a page break in Microsoft Word?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q22" value="a">A. Using the 'Page Break' button in the Insert tab</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q22" value="b">B. Pressing Ctrl + Enter</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q22" value="c">C. Right-clicking and selecting 'Insert Page Break'</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>23. How can you change the font size in a Word document?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q23" value="a">A. Using the 'Font Size' option in the Home tab</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q23" value="b">B. Right-clicking and selecting 'Change Font Size'</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q23" value="c">C. Pressing Ctrl + F</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>24. How can you undo the last action in Microsoft Word?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q24" value="a">A. Pressing Ctrl + Z</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q24" value="b">B. Right-clicking and selecting 'Undo'</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q24" value="c">C. Using the 'Undo' button in the Review tab</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="question">
+                                    <p>25. How can you change the page margins in a Word document?</p>
+                                    <ul class="options">
+                                        <li class="option">
+                                            <label><input type="radio" name="q25" value="a">A. Using the 'Margins' option in the Layout tab</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q25" value="b">B. Right-clicking and selecting 'Page Margins'</label>
+                                        </li>
+                                        <li class="option">
+                                            <label><input type="radio" name="q25" value="c">C. Pressing Ctrl + M</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary justify-content-center" onclick="startExcel()" id="startExcelButton">Submit and Continue</button>     
+            </div>
+            <div id="excel" class="container d-none">
+                <h3 class="text-center">Excel</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>26. Which Excel feature allows you to view the formulas in a spreadsheet instead of their calculated values?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q26" value="a">A. Formula Checker</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q26" value="b">B. Formula Inspector</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q26" value="c">C. Formula Viewer</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q26" value="d">D. Show Formulas</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>27. What function would you use in Excel to find the number of characters in a cell?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q27" value="a">A. =LEN()</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q27" value="b">B. =CHARCOUNT()</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q27" value="c">C. =CELLCHARS()</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q27" value="d">D. =COUNTCHAR()</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+             <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>28. What is the function used to find the highest value in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q28" value="a">A. =maximum()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q28" value="b">B. =max()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q28" value="c">C. =top()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q28" value="d">D. =high()</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="question">
+                <p>29. How can you freeze panes in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q29" value="a">A. Home tab - Freeze Panes</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q29" value="b">B. View tab - Freeze Panes</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q29" value="c">C. Data tab - Freeze Panes</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q29" value="d">D. Insert tab - Freeze Panes</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>30. How do you apply a filter in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q30" value="a">A. Data tab - Filter</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q30" value="b">B. View tab - Filter</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q30" value="c">C. Insert tab - Filter</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q30" value="d">D. Review tab - Filter</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="question">
+                <p>31. Which function is used to count cells with numbers in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q31" value="a">A. =count_numbers()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q31" value="b">B. =count()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q31" value="c">C. =number_count()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q31" value="d">D. =sum_numbers()</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>32. What is the shortcut key to open the 'Format Cells' dialog box in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q32" value="a">A. Ctrl + F</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q32" value="b">B. Ctrl + E</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q32" value="c">C. Ctrl + Shift + F</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q32" value="d">D. Ctrl + 1</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="question">
+                <p>33. Which formula in Excel is used to join text from multiple cells into one cell?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q33" value="a">A. =concat()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q33" value="b">B. =merge()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q33" value="c">C. =combine()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q33" value="d">D. =join()</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>34. What function is used to find the average of a range of numbers in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q34" value="a">A. =mean()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q34" value="b">B. =average()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q34" value="c">C. =avg()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q34" value="d">D. =mid()</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="question">
+                <p>35. How do you create a chart in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q35" value="a">A. Insert tab - Chart</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q35" value="b">B. Data tab - Chart</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q35" value="c">C. View tab - Chart</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q35" value="d">D. Format tab - Chart</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>36. Which Excel function is used to round a number to the nearest integer?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q36" value="a">A. =round()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q36" value="b">B. =int()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q36" value="c">C. =ceiling()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q36" value="d">D. =floor()</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="question">
+                <p>37. What Excel feature is used to highlight cells that meet specific criteria?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q37" value="a">A. Conditional Formatting</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q37" value="b">B. Data Validation</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q37" value="c">C. Sort and Filter</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q37" value="d">D. Subtotal</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>38. What does the VLOOKUP function do in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q38" value="a">A. Searches for a value in the first column of a table and returns a value in the same row from another column</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q38" value="b">B. Performs vertical calculations</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q38" value="c">C. Verifies data accuracy</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q38" value="d">D. Validates user input</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="question">
+                <p>39. In Excel, what is the function of the COUNTA function?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q39" value="a">A. Counts the number of cells containing numbers</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q39" value="b">B. Counts the number of non-empty cells</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q39" value="c">C. Counts the number of cells with formulas</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q39" value="d">D. Counts the number of cells containing text</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>40. What does the CONCATENATE function do in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q40" value="a">A. Adds cells together</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q40" value="b">B. Merges multiple cell values into one</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q40" value="c">C. Divides cell values</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q40" value="d">D. Subtracts cell values</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="question">
+                <p>41. Which Excel feature allows you to freeze specific rows or columns while scrolling?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q41" value="a">A. Freeze Panes</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q41" value="b">B. Lock Cells</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q41" value="c">C. Split Window</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q41" value="d">D. Freeze Cells</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>42. What does the formula =AVERAGE(A1:A10) do in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q42" value="a">A. Finds the sum of the range A1 to A10</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q42" value="b">B. Calculates the average of the range A1 to A10</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q42" value="c">C. Counts the cells with values in the range A1 to A10</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q42" value="d">D. Rounds off the values in the range A1 to A10</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="question">
+                <p>43. Which Excel function is used to find the largest value in a range?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q43" value="a">A. =MAX()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q43" value="b">B. =LARGE()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q43" value="c">C. =BIGGEST()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q43" value="d">D. =GREATER()</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>44. What does the function =VLOOKUP() do in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q44" value="a">A. Searches for a value in the first column of a table array and returns a value in the same row from another column</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q44" value="b">B. Calculates the variance between two ranges</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q44" value="c">C. Checks for errors in the worksheet</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q44" value="d">D. Summarizes data based on criteria</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="question">
+                <p>45. Which Excel function is used to count the number of cells in a range that meet a specific condition?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q45" value="a">A. =IF()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q45" value="b">B. =COUNT()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q45" value="c">C. =SUMIF()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q45" value="d">D. =COUNTIF()</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>46. Which keyboard shortcut is used to insert a new worksheet in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q46" value="a">A. Ctrl + N</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q46" value="b">B. Ctrl + W</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q46" value="c">C. Shift + N</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q46" value="d">D. Alt + W + I</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="question">
+                <p>47. What does the function =CONCATENATE() do in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q47" value="a">A. Adds two numbers together</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q47" value="b">B. Concatenates strings from multiple cells into one cell</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q47" value="c">C. Divides a number by another</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q47" value="d">D. Finds the square root of a number</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>48. In Excel, what function would you use to find the highest value in a range of cells?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q48" value="a">A. =MAX()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q48" value="b">B. =LARGE()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q48" value="c">C. =HIGHEST()</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q48" value="d">D. =TOP()</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="question">
+                <p>49. What is the function of the formula =ROUNDUP(13.254, 2) in Excel?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q49" value="a">A. Rounds the number to the nearest integer</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q49" value="b">B. Rounds the number up to two decimal places</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q49" value="c">C. Rounds the number down to two decimal places</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q49" value="d">D. Converts the number to an integer</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-6">
+            <div class="question">
+                <p>50. Which Excel feature allows you to view the formulas in a spreadsheet instead of their calculated values?</p>
+                <ul class="options">
+                    <li class="option">
+                        <label><input type="radio" name="q50" value="a">A. Formula Checker</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q50" value="b">B. Formula Inspector</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q50" value="c">C. Formula Viewer</label>
+                    </li>
+                    <li class="option">
+                        <label><input type="radio" name="q50" value="d">D. Show Formulas</label>
+                    </li>
+                </ul>
+            </div>
+        </div></div>
+        <div class="row">
+     <button type="button" class="btn btn-primary btn-block w-25 mb-3 mr-auto" id="wordprev" onclick="toggleExamContainer()">Previous</button>
+    <button type="button" class="btn btn-primary btn-block w-25 mb-3 ml-4" onclick="startPowerPoint()" id="startPowerPointButton">Next</button>     
+</div>    
+</div>
+            <div id="powerpoint" class="container d-none">
+                <h3 class="text-center">Power Point</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>51. How do you apply a transition to slides in PowerPoint?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q51" value="a">A. Using the 'Animations' tab</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q51" value="b">B. Right-clicking on the slide and selecting 'Transition'</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q51" value="c">C. Pressing Ctrl + T</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>52. What is the purpose of 'Slide Sorter' view in PowerPoint?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q52" value="a">A. To view and arrange slides as thumbnails</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q52" value="b">B. To format text in slides</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q52" value="c">C. To add animations to slides</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>53. How can you insert a new slide in PowerPoint?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q53" value="a">A. Ctrl + S</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q53" value="b">B. Right-clicking on a slide and selecting 'Insert New Slide'</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q53" value="c">C. Using the 'Insert' tab - 'New Slide'</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>54. What does the 'Design Ideas' feature in PowerPoint do?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q54" value="a">A. Applies slide transitions</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q54" value="b">B. Suggests slide layout and design options</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q54" value="c">C. Organizes slides in a presentation</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>55. How can you format text in PowerPoint?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q55" value="a">A. Using the 'Insert' tab</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q55" value="b">B. Through the 'Format' tab</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q55" value="c">C. Utilizing the 'Home' tab</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>56. What is the purpose of 'Slide Master' in PowerPoint?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q56" value="a">A. It allows creation of slide layouts and global design changes</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q56" value="b">B. Provides spellcheck and grammar correction</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q56" value="c">C. Manages slide transitions and animations</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>57. Which feature in PowerPoint allows for the creation of custom animation paths for objects?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q57" value="a">A. Animation Painter</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q57" value="b">B. Animation Pane</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q57" value="c">C. Motion Paths</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>58. How can you set up a PowerPoint presentation to run automatically without manual control?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q58" value="a">A. Adjusting playback settings in Slide Show tab</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q58" value="b">B. Using the 'AutoRun' feature in the File menu</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q58" value="c">C. Recording macros for automatic playback</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>59. What does the 'Slide Master' feature in PowerPoint allow you to do?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q59" value="a">A. Create and edit slide transitions</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q59" value="b">B. Customize the design and layout of all slides</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q59" value="c">C. Manage speaker notes for individual slides</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>60. Which feature allows you to embed a video directly into a PowerPoint presentation?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q60" value="a">A. Media Player</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q60" value="b">B. Video Tool</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q60" value="c">C. Insert Video</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>61. What is the purpose of the 'Slide Transition' feature in PowerPoint?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q61" value="a">A. Adjust slide layout and design</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q61" value="b">B. Control how slides move from one to another during a presentation</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q61" value="c">C. Create slide animations</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>62. How can you add a hyperlink to a slide in PowerPoint?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q62" value="a">A. Use the 'Format' tab</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q62" value="b">B. Right-click and select 'Hyperlink'</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q62" value="c">C. Insert a shape and link it</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>63. What is the purpose of the 'Presenter Coach' feature in PowerPoint?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q63" value="a">A. Provides feedback on your presentation delivery</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q63" value="b">B. Creates an outline for your presentation</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q63" value="c">C. Generates speaker notes automatically</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>64. How can you convert a PowerPoint presentation into a video file?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q64" value="a">A. Export as Video in the File menu</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q64" value="b">B. Use the 'Convert to Video' option in the Slide Show tab</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q64" value="c">C. Save As and choose video format</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>65. How can you add speaker notes to individual slides in PowerPoint?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q65" value="a">A. Click on the Notes button in the Status bar</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q65" value="b">B. Use the 'Insert' tab and select 'Speaker Notes'</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q65" value="c">C. Right-click on a slide and choose 'Add Speaker Notes'</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>66. Which view in PowerPoint allows you to rearrange the order of slides easily?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q66" value="a">A. Slide Sorter</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q66" value="b">B. Normal View</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q66" value="c">C. Reading View</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>67. What is the purpose of the 'Grid and Guides' feature in PowerPoint?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q67" value="a">A. Provides alignment assistance for slide objects</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q67" value="b">B. Generates pixel-perfect slide designs</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q67" value="c">C. Inserts pre-made grids and guide designs</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>68. How can you add animations to individual elements within a slide in PowerPoint?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q68" value="a">A. Use the 'Animation Painter'</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q68" value="b">B. Access the 'Animation' tab and apply effects to objects</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q68" value="c">C. Enable 'Advanced Animation' options in Slide Show settings</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>69. What is the purpose of the 'Slide Master' in PowerPoint?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q69" value="a">A. To design individual slide layouts and formatting</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q69" value="b">B. It automatically creates slides with preset content</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q69" value="c">C. To control the order of slides in a presentation</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>70. How can you add a transition between slides in PowerPoint?</p>
+                        <ul class="options">
+                            <li class="option">
+                                <label><input type="radio" name="q70" value="a">A. Access the 'Slide Sorter' view and drag slides</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q70" value="b">B. Utilize the 'Animations' tab to select transition effects</label>
+                            </li>
+                            <li class="option">
+                                <label><input type="radio" name="q70" value="c">C. Apply transition effects by double-clicking the slide</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div></div>
+                <div class="row">
+                   <button type="button" class="btn btn-primary btn-block mb-3 w-25 mr-auto" onclick="startExcel()" id="power">Previous</button> 
+                <button type="button" class="btn btn-primary btn-block mb-3 w-25 ml-4" onclick="startAccess()" id="startAccessButton">Next</button>     
+            </div>       
+            </div>
+            <div id="access" class="container d-none">
+                <h3 class="text-center">Microsoft Access</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>71. What is the primary purpose of creating relationships between tables in Microsoft Access?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q71" value="a">A. To establish visual connections between tables</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q71" value="b">B. To minimize data redundancy and maintain data integrity</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q71" value="c">C. To improve form designs in the database</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>72. How can you create a new table in Microsoft Access?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q72" value="a">A. Using the 'Queries' tab</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q72" value="b">B. From the 'Design' tab</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q72" value="c">C. Via the 'Tables' tab</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="question">
+                                <p>73. What is the purpose of a primary key in a Microsoft Access table?</p>
+                                <ul class="options">
+                                    <li class="option">
+                                        <label><input type="radio" name="q73" value="a">A. It ensures data is stored in alphabetical order</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q73" value="b">B. It uniquely identifies each record in the table</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q73" value="c">C. It sets the default value for new records</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="question">
+                                <p>74. What does a query in Microsoft Access allow you to do?</p>
+                                <ul class="options">
+                                    <li class="option">
+                                        <label><input type="radio" name="q74" value="a">A. Create reports with complex layouts</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q74" value="b">B. Retrieve specific data based on defined criteria</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q74" value="c">C. Modify table structures directly</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="question">
+                                <p>75. How can you enforce data validation rules in an Access table?</p>
+                                <ul class="options">
+                                    <li class="option">
+                                        <label><input type="radio" name="q75" value="a">A. By setting conditional formatting</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q75" value="b">B. Through the 'Database Tools' tab</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q75" value="c">C. Using field properties and validation rules</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="question">
+                                <p>76. What does the 'Relationships' tool in Access primarily help to establish?</p>
+                                <ul class="options">
+                                    <li class="option">
+                                        <label><input type="radio" name="q76" value="a">A. Graphic designs between tables</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q76" value="b">B. Connections between macros</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q76" value="c">C. Connections and links between tables</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="question">
+                                <p>77. What does a 'Form' in Microsoft Access allow users to do?</p>
+                                <ul class="options">
+                                    <li class="option">
+                                        <label><input type="radio" name="q77" value="a">A. Create SQL queries</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q77" value="b">B. Enter, modify, and view data in a more user-friendly way</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q77" value="c">C. Generate reports directly from tables</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="question">
+                                <p>78. How can you create a new table in Microsoft Access?</p>
+                                <ul class="options">
+                                    <li class="option">
+                                        <label><input type="radio" name="q78" value="a">A. Using the 'Design View' in an existing table</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q78" value="b">B. By importing data from Excel only</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q78" value="c">C. Through the 'Table Design' or 'Datasheet View'</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="question">
+                                <p>79. What purpose does the 'Compact and Repair Database' function serve in Microsoft Access?</p>
+                                <ul class="options">
+                                    <li class="option">
+                                        <label><input type="radio" name="q79" value="a">A. It rearranges the table structure for better performance</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q79" value="b">B. It compresses images embedded in the database</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q79" value="c">C. It repairs and optimizes the database file</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="question">
+                                <p>80. How can you create a relationship between tables in Microsoft Access?</p>
+                                <ul class="options">
+                                    <li class="option">
+                                        <label><input type="radio" name="q80" value="a">A. By dragging and dropping table fields</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q80" value="b">B. Only through SQL queries</label>
+                                    </li>
+                                    <li class="option">
+                                        <label><input type="radio" name="q80" value="c">C. Solely via the 'Database Tools' tab</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                 <div class="row">
+                     <button type="button" class="btn btn-primary btn-block mb-3 w-25 mr-auto" onclick="startPowerPoint()" id="accessBtn">Previous</button>     
+                 <button type="button" class="btn btn-primary btn-block mb-3 w-25 ml-4" onclick="startNetworking()" id="starNetworkingButton">Next</button>
+                </div></div>
+            <div id="networking" class="container d-none">
+                <h3 class="text-center">Network and Networking</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>81. What is the primary purpose of a computer network?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q81" value="a">A. File storage</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q81" value="b">B. Resource sharing</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q81" value="c">C. Graphic design</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>82. Which layer of the OSI model is responsible for logical addressing?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q82" value="a">A. Physical layer</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q82" value="b">B. Network layer</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q82" value="c">C. Transport layer</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>83. What is the purpose of a LAN (Local Area Network)?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q83" value="a">A. Connect devices within a small geographic area</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q83" value="b">B. Connect devices globally</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q83" value="c">C. Connect devices in different cities</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>84. Which network topology connects all devices in a line?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q84" value="a">A. Bus topology</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q84" value="b">B. Star topology</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q84" value="c">C. Ring topology</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>85. What device connects different networks together?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q85" value="a">A. Router</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q85" value="b">B. Switch</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q85" value="c">C. Hub</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>86. What is the purpose of the MAC address in networking?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q86" value="a">A. Identify a device on the Internet</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q86" value="b">B. Identify a device on a local network</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q86" value="c">C. Identify a device's IP address</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>87. Which CMD command is used to check the IP configuration of a Windows computer?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q87" value="a">A. ipconfig</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q87" value="b">B. ping</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q87" value="c">C. traceroute</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>88. What is the purpose of subnetting in networking?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q88" value="a">A. Divide a large network into smaller, more manageable sub-networks</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q88" value="b">B. Increase the speed of network connections</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q88" value="c">C. Assign multiple IP addresses to a single device</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>89. In networking, what does DNS stand for?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q89" value="a">A. Dynamic Network System</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q89" value="b">B. Domain Name System
+                                    </label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q89" value="c">C. Digital Network Service</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>90. What is the primary function of a firewall in a network?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q90" value="a">A. To block unauthorized access and control incoming/outgoing traffic</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q90" value="b">B. To increase network speed</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q90" value="c">C. To manage network cables</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>91. What is the standard protocol used for secure data transmission over the internet?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q91" value="a">A. HTTP</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q91" value="b">B. HTTPS</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q91" value="c">C. FTP</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>92. Which type of network topology connects every node to a central hub?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q92" value="a">A. Mesh topology</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q92" value="b">B. Star topology</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q92" value="c">C. Ring topology</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>93. What does the ping command do in networking?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q93" value="a">A. Checks network speed</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q93" value="b">B. Sends a message to another computer to check connectivity</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q93" value="c">C. Retrieves files from a remote server</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>94. What does the term 'bandwidth' refer to in networking?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q94" value="a">A. Amount of data that can be transferred over a network in a given time</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q94" value="b">B. Physical length of the network cables</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q94" value="c">C. Network security level</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>95. Which device is used to connect multiple network segments together?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q95" value="a">A. Switch</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q95" value="b">B. Router</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q95" value="c">C. Hub</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>96. What is the purpose of the command 'tracert' in networking?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q96" value="a">A. Display the route that data packets take from source to destination</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q96" value="b">B. Check the network's throughput</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q96" value="c">C. Test the network's security</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>97. What is the function of a repeater in a network?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q97" value="a">A. Extend the distance a signal can travel</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q97" value="b">B. Translate network protocols</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q97" value="c">C. Manage IP addresses</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>98. What is a subnet mask used for in networking?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q98" value="a">A. Identify the network portion of an IP address</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q98" value="b">B. Hide a network from unauthorized access</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q98" value="c">C. Identify the host portion of an IP address</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>99. Which networking device operates at the Data Link Layer of the OSI model?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q99" value="a">A. Router</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q99" value="b">B. Bridge</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q99" value="c">C. Switch</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="question">
+                            <p>100. What is the purpose of the ARP command in networking?</p>
+                            <ul class="options">
+                                <li class="option">
+                                    <label><input type="radio" name="q100" value="a">A. Map IP addresses to MAC addresses</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q100" value="b">B. Check network speed</label>
+                                </li>
+                                <li class="option">
+                                    <label><input type="radio" name="q100" value="c">C. Retrieve files from remote servers</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn-primary btn-block mb-3 w-25 mr-auto" onclick="startAccess()" id="accessPrev">Previous</button>                                 
+                <button type="submit" id="submitBtn" class="btn btn-success btn-block mb-3 w-25 ml-4" onclick="gradeExam()"> Submit and Finish</button>
+                </div>
+        </form>
+        </div>
+         <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+        <script>
+document.getElementById('date').innerHTML = Date();
+const idForm = document.getElementById('idForm');
+const start = document.getElementById('start');
+const examContainer = document.getElementById('examContainer');
+const validExamId = 'ICS111'; // Valid exam ID for this exam
+
+const timerElement = document.getElementById('timer');
+let timeLeft = 5400; // 90 minutes in seconds
+let timer;
+let canSubmit = true;
+let examSubmitted = false; // Flag to indicate if the exam has been submitted
+// toggle container and also used to go word previous
+function toggleExamContainer() {
+    document.getElementById('idForm').classList.add('d-none');
+    document.getElementById('start').classList.add('d-none');
+    document.getElementById('intro').classList.add('d-none');
+    document.getElementById('examContainer').classList.remove('d-none');
+    document.getElementById('excel').classList.add('d-none');
+    document.getElementById('wordprocessing').classList.remove('d-none');
+
+    
+};
+
+function startExcel() {
+    document.getElementById('idForm').classList.add('d-none');
+    document.getElementById('start').classList.add('d-none');
+    document.getElementById('intro').classList.add('d-none');
+    document.getElementById('examContainer').classList.remove('d-none');
+    document.getElementById('excel').classList.remove('d-none');
+    document.getElementById('wordprocessing').classList.add('d-none');
+};
+
+document.getElementById('startExcelButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior
+
+    // Call the startExcel function
+    startExcel();
+});
+//prvious page excel
+function startExcel() {
+    document.getElementById('idForm').classList.add('d-none');
+    document.getElementById('start').classList.add('d-none');
+    document.getElementById('intro').classList.add('d-none');
+    document.getElementById('examContainer').classList.remove('d-none');
+    document.getElementById('excel').classList.remove('d-none');
+    document.getElementById('wordprocessing').classList.add('d-none');
+    document.getElementById('powerpoint').classList.add('d-none');
+
+};
+
+document.getElementById('power').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior
+
+    // Call the startExcel function
+    startExcel();
+});
+
+function startPowerPoint() {
+    document.getElementById('idForm').classList.add('d-none');
+    document.getElementById('start').classList.add('d-none');
+    document.getElementById('intro').classList.add('d-none');
+    document.getElementById('examContainer').classList.remove('d-none');
+    document.getElementById('powerpoint').classList.remove('d-none');
+    document.getElementById('excel').classList.add('d-none');
+};
+
+document.getElementById('startPowerPointButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior
+
+    // Call the startExcel function
+    startPowerPoint();
+});
+//previous powerpoint
+function startPowerPoint() {
+    document.getElementById('idForm').classList.add('d-none');
+    document.getElementById('start').classList.add('d-none');
+    document.getElementById('intro').classList.add('d-none');
+    document.getElementById('examContainer').classList.remove('d-none');
+    document.getElementById('powerpoint').classList.remove('d-none');
+    document.getElementById('excel').classList.add('d-none');
+    document.getElementById('access').classList.add('d-none');
+
+};
+
+document.getElementById('accessBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior
+
+    // Call the startExcel function
+    startPowerPoint();
+});
+
+
+function startAccess() {
+    document.getElementById('idForm').classList.add('d-none');
+    document.getElementById('start').classList.add('d-none');
+    document.getElementById('intro').classList.add('d-none');
+    document.getElementById('examContainer').classList.remove('d-none');
+    document.getElementById('excel').classList.add('d-none');
+    document.getElementById('access').classList.remove('d-none');
+    document.getElementById('powerpoint').classList.add('d-none');
+
+};
+
+document.getElementById('startAccessButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior
+
+    // Call the startExcel function
+    startAccess();
+});
+//previous access
+function startAccess() {
+    document.getElementById('idForm').classList.add('d-none');
+    document.getElementById('start').classList.add('d-none');
+    document.getElementById('intro').classList.add('d-none');
+    document.getElementById('examContainer').classList.remove('d-none');
+    document.getElementById('excel').classList.add('d-none');
+    document.getElementById('access').classList.remove('d-none');
+    document.getElementById('powerpoint').classList.add('d-none');
+    document.getElementById('networking').classList.add('d-none');
+
+};
+
+document.getElementById('accessPrev').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior
+
+    // Call the startExcel function
+    startAccess();
+});
+
+function  startNetworking() {
+    document.getElementById('idForm').classList.add('d-none');
+    document.getElementById('start').classList.add('d-none');
+    document.getElementById('intro').classList.add('d-none');
+    document.getElementById('examContainer').classList.remove('d-none');
+    document.getElementById('networking').classList.remove('d-none');
+    document.getElementById('access').classList.add('d-none');
+};
+
+document.getElementById('starNetworkingButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior
+
+    // Call the startExcel function
+    startNetworking();
+});
+
+
+// Rest of your existing JavaScript functions...
+function startExam() {
+    const idNumberInput = document.getElementById('idNumber');
+    const idNumber = idNumberInput.value.trim();
+
+    const fullNameInput = document.getElementById('fullName');
+    const fullName = fullNameInput.value.trim();
+
+    const examIdInput = document.getElementById('examId');
+const examId = examIdInput.value.trim().toUpperCase();
+
+    // Check if ID number and exam ID are entered
+    if (idNumber === '' || examId === '' || fullName === '') {
+        alert('Please enter your full Name, ID number, and the Exam ID to start the exam.');
+        return;
+    }
+
+    // Check if the entered exam ID is valid
+    if (examId !== validExamId) {
+        alert('Invalid Exam ID. Please enter the correct Exam ID to access the exam.');
+        return;
+    }
+
+   // Check if the student has ever submitted the current exam before
+const hasEverSubmitted = localStorage.getItem(`${idNumber}_${validExamId}`);
+if (hasEverSubmitted) {
+    const examData = JSON.parse(hasEverSubmitted);
+    if (examData.answered) {
+        const previousScore = examData.score; // Retrieve the total score from examData
+        const previousFullName = examData.fullName;
+        const previousExamId = examData.examId;
+        const previousStudentId = examData.studentId;
+        alert(`You have attempted this exam, and only one attempt is allowed.\nThank you!\n\nYour details are:\nName: ${previousFullName}\nExam ID: ${previousExamId}\nStudent ID: ${previousStudentId}\nYou have answered ${previousScore} questions correctly out of a hundred.`);
+        return;
+
+    }
+}
+
+    // Hide the ID form and show the exam container
+    toggleExamContainer();
+   
+
+    // If the timer was already running, do not start a new timer
+    if (!timer) {
+        // Check if the exam has been started before
+        const remainingTime = localStorage.getItem(`${idNumber}_${validExamId}_time`);
+        if (remainingTime) {
+            timeLeft = Math.max(parseInt(remainingTime, 10), 0); // Ensure timeLeft is not negative
+            // If timeLeft is 0, the exam has already ended, so submit the exam
+            if (timeLeft === 0) {
+                handleExamClosure();
+                canSubmit = false;
+                return;
+            }
+        }
+
+        updateTimer();
+    }
+
+    // Display student ID at the top right corner of the exam page
+    const studentIdDisplay = document.createElement('div');
+    studentIdDisplay.id = 'studentIdDisplay';
+    studentIdDisplay.textContent = `Student ID: ${idNumber}`;
+    document.body.appendChild(studentIdDisplay);
+
+    // Display full name  at the top left corner of the exam page
+    const fullNameDisplay = document.createElement('div');
+    fullNameDisplay.id = 'fullNameDisplay';
+    fullNameDisplay.textContent = `Name: ${fullName}`;
+    document.body.appendChild(fullNameDisplay);
+
+    // Load saved exam data if available
+    loadSavedExamData();
+    
+     /*Display student ID and full name just after the submit button
+     const submitButton = document.getElementById('submitBtn');
+     const studentInfoAfterSubmit = document.createElement('div');
+    studentInfoAfterSubmit.textContent = `Student ID: ${idNumber}     Full Name: ${fullName}`;
+    submitButton.parentNode.insertBefore(studentInfoAfterSubmit, submitButton.nextSibling);*/
+}
+
+   
+function updateTimer() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    const displayTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    timerElement.textContent = displayTime;
+
+    if (timeLeft === 0 && canSubmit) {
+        handleExamClosure();
+        canSubmit = false;
+    } else {
+        timeLeft--;
+        timer = setTimeout(updateTimer, 1000);
+    }
+}
+ 
+
+function handleExamClosure() {
+    // Save exam data when the time is up or when the student closes the exam
+    saveExamData();
+    gradeExam();
+}
+
+
+function saveExamData() {
+    const idNumberInput = document.getElementById('idNumber');
+    const idNumber = idNumberInput.value.trim();
+    const form = document.getElementById('examForm');
+    const formData = new FormData(form);
+    const examData = {
+        answered: true,
+        answers: {},
+        fullName: document.getElementById('fullName').value.trim(),
+        examId: document.getElementById('examId').value.trim(),
+        studentId: idNumber,
+    };
+
+    // Save the selected answers for each question
+    for (const pair of formData.entries()) {
+        const questionId = pair[0];
+        const selectedAnswer = pair[1];
+        examData.answers[questionId] = selectedAnswer;
+    }
+
+    localStorage.setItem(`${idNumber}_${validExamId}`, JSON.stringify(examData));
+    localStorage.setItem(`${idNumber}_${validExamId}_time`, timeLeft.toString());
+}
+
+
+function loadSavedExamData() {
+    const idNumberInput = document.getElementById('idNumber');
+    const idNumber = idNumberInput.value.trim();
+
+    // Retrieve saved exam data from localStorage
+    const savedData = localStorage.getItem(`${idNumber}_${validExamId}`);
+    if (savedData) {
+        const examData = JSON.parse(savedData);
+
+        // Restore the answered questions
+        const form = document.getElementById('examForm');
+        for (const questionId in examData.answers) {
+            const selectedAnswer = examData.answers[questionId];
+            const radioBtn = form.querySelector(`input[name="${questionId}"][value="${selectedAnswer}"]`);
+            if (radioBtn) {
+                radioBtn.checked = true;
+            }
+        }
+    }
+}
+
+
+        // Add event listener for the submit button
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitButton = document.getElementById('submitBtn');
+
+            submitButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default form submission behavior
+                gradeExam(); // Call the gradeExam function when the button is clicked
+            });
+        });
+        function gradeExam() {
+    const form = document.getElementById('examForm');
+    const formData = new FormData(form);
+    const totalQuestions = document.querySelectorAll('.question').length;
+    let correctAnswers = 0;
+
+    const sectionRanges = {
+        wordProcessing: { start: 1, end: 25 },
+        excel: { start: 26, end: 50 },
+        powerPoint: { start: 51, end: 70 },
+        access: { start: 71, end: 80 },
+        networking: { start: 81, end: 100 }
+    };
+
+    let sectionScores = {
+        wordProcessing: 0,
+        excel: 0,
+        powerPoint: 0,
+        access: 0,
+        networking: 0
+    };
+
+    const correctAnswersMap = {
+        q1: "a",
+        q2: "b",
+        q3: "a",
+        q4: "a",
+        q5: "a",
+        q6: "a",
+        q7: "a",
+        q8: "a",
+        q9: "a",
+        q10: "a",
+        q11: "b",
+        q12: "a",
+        q13: "a",
+        q14: "a",
+        q15: "a",
+        q16: "a",
+        q17: "a",
+        q18: "a",
+        q19: "a",
+        q20: "a",
+        q21: "a",
+        q22: "a",
+        q23: "a",
+        q24: "a",
+        q25: "a",
+        q26: "d",
+        q27: "a",
+        q28: "b",
+        q29: "b",
+        q30: "a",
+        q31: "b",
+        q32: "d",
+        q33: "a",
+        q34: "b",
+        q35: "a",
+        q36: "a",
+        q37: "a",
+        q38: "a",
+        q39: "b",
+        q40: "b",
+        q41: "a",
+        q42: "b",
+        q43: "a",
+        q44: "a",
+        q45: "d",
+        q46: "a",
+        q47: "b",
+        q48: "a",
+        q49: "b",
+        q50: "d",
+        q51: "a",
+        q52: "a",
+        q53: "c",
+        q54: "b",
+        q55: "c",
+        q56: "a",
+        q57: "a",
+        q58: "a",
+        q59: "b",
+        q60: "c",
+        q61: "b",
+        q62: "b",
+        q63: "a",
+        q64: "a",
+        q65: "a",
+        q66: "a",
+        q67: "a",
+        q68: "b",
+        q69: "a",
+        q70: "b",
+        q71: "b",
+    q72: "c",
+    q73: "b",
+    q74: "b",
+    q75: "c",
+    q76: "c",
+    q77: "b",
+    q78: "c",
+    q79: "c",
+    q80: "a",
+    q81: "b",
+    q82: "b",
+    q83: "a",
+    q84: "a",
+    q85: "a",
+    q86: "b",
+    q87: "a",
+    q88: "a",
+    q89: "b",
+    q90: "a",
+    q91: "b",
+    q92: "b",
+    q93: "b",
+    q94: "a",
+    q95: "c",
+    q96: "a",
+    q97: "a",
+    q98: "a",
+    q99: "c",
+    q100: "a"
+    };
+
+    for (const pair of formData.entries()) {
+        const questionId = pair[0];
+        const selectedAnswer = pair[1];
+
+        if (correctAnswersMap[questionId] === selectedAnswer) {
+            correctAnswers++;
+
+            for (const section in sectionRanges) {
+                const { start, end } = sectionRanges[section];
+                if (parseInt(questionId.replace('q', '')) >= start && parseInt(questionId.replace('q', '')) <= end) {
+                    sectionScores[section]++;
+                    break;
+                }
+            }
+        }
+    }
+
+    // Calculate scores out of 100 for each section
+    const sectionMaxScores = {
+        wordProcessing: 25,
+        excel: 25,
+        powerPoint: 20,
+        access: 10,
+        networking: 20
+    };
+
+    const sectionScoresOutof100 = {};
+    for (const section in sectionScores) {
+        const maxScoreForSection = sectionMaxScores[section];
+        sectionScoresOutof100[section] = (sectionScores[section] / maxScoreForSection) * 100;
+    }
+
+    const idNumberInput = document.getElementById('idNumber');
+    const idNumber = idNumberInput.value.trim();
+    const fullName = document.getElementById('fullName').value.trim();
+    const examId = document.getElementById('examId').value.trim();
+
+    // Store other data and perform actions
+    localStorage.setItem(
+        `${idNumber}_${validExamId}`,
+        JSON.stringify({ answered: true, score: correctAnswers, fullName, examId, studentId: idNumber })
+    );
+
+    // Calculate the number of failed questions (unanswered questions)
+    const failedQuestions = totalQuestions - correctAnswers;
+ // Calculate total score out of 100
+ const totalScore = Object.values(sectionScoresOutof100).reduce((acc, val) => acc + val, 0);
+
+// Show the student's score for the exam
+alert(`Your total score: ${totalScore}\n
+Word Processing: ${sectionScoresOutof100.wordProcessing}\n
+Excel: ${sectionScoresOutof100.excel}\n
+PowerPoint: ${sectionScoresOutof100.powerPoint}\n
+Access: ${sectionScoresOutof100.access}\n
+Networking: ${sectionScoresOutof100.networking}\n
+${failedQuestions} question(s) were not answered.`);
+
+
+    // Set the examSubmitted flag to prevent resubmission
+    examSubmitted = true;
+
+    // Disable the submit button to prevent going back to the exam
+    document.getElementById('submitBtn').disabled = true;
+
+    // Redirect to the score page with the score and failed questions count as parameters in the URL
+    window.location.href = `score.html?score=${correctAnswers}&wordProcessingScore=${sectionScoresOutof100.wordProcessing}&excelScore=${sectionScoresOutof100.excel}&powerPointScore=${sectionScoresOutof100.powerPoint}&accessScore=${sectionScoresOutof100.access}&networkingScore=${sectionScoresOutof100.networking}&failed=${failedQuestions}&idNumber=${idNumber}&fullName=${fullName}&examId=${examId}`;
+}
+
+window.addEventListener('DOMContentLoaded', loadSavedExamData);
+
+window.onbeforeunload = function (event) {
+    if (timeLeft > 0 && canSubmit && !examSubmitted) {
+        handleExamClosure();
+        const confirmationMessage = 'Your exam progress will be lost if you leave this page. Do you want to stay on the page?';
+        (event || window.event).returnValue = confirmationMessage;
+        return confirmationMessage;
+    }
+};
+ </script>
+</body>
+</html>
