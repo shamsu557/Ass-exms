@@ -39,11 +39,11 @@
     <div class="container">
         <h1 class="text-center bg-light text-secondary">Exam Results</h1>
         <div class="row">
-            <div class="col-md-6 bg-light ">
+            <div class="col-md-6 bg-light mt-1">
                 <!-- Transparent finished exam image -->
-                <img src="examfinished.jpg" alt="Finished Exam Image" class="finished-exam">
+                <img src="examfinished.jpg" alt="Finished Exam Image" class="image-fluid finished-exam">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 bg-light mt-1">
                 <!-- Exam score details -->
                 <div class="score-section">
                     <h2 class="text-center bg-light text-success mt-2">You're Almost Done!</h2>
@@ -151,7 +151,7 @@ document.getElementById('averageScore').textContent = isNaN(averageScore) ? 'N/A
 // Add this code after calculating the average score
 const messageElement = document.getElementById('message');
     if (!isNaN(averageScore)) {
-        if (averageScore >= 35) {
+        if (averageScore >= 30) {
             messageElement.textContent = `Congratulations, ${fullName}! Your certificate will soon be ready. Thank you!`;
         } else {
             messageElement.textContent = `Sorry, ${fullName}, your results indicate you should try again later.`;

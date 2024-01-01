@@ -137,7 +137,7 @@
 <div class="container-fluid bg-light mt-4 w-75 ml-auto">
     <h1 class="text-center text-primary">Computer Appreciation Examination</h1>
     <div  class="row">
-        <div id="start" class="col-md-6 mt-4">
+        <div id="start" class="col-md-6 mb-4">
             <!-- Image or content for starting exam -->
             <img src="startexam.jpg" alt="Start Exam Image" class="img-fluid start-exam w-100">
         </div>
@@ -1998,8 +1998,16 @@ let timeLeft = 5400; // 90 minutes in seconds
 let timer;
 let canSubmit = true;
 let examSubmitted = false; // Flag to indicate if the exam has been submitted
+//scroll to top for each section automatically
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 // toggle container and also used to go word previous
 function toggleExamContainer() {
+    scrollToTop();
     document.getElementById('idForm').classList.add('d-none');
     document.getElementById('start').classList.add('d-none');
     document.getElementById('intro').classList.add('d-none');
@@ -2011,6 +2019,7 @@ function toggleExamContainer() {
 };
 
 function startExcel() {
+    scrollToTop();
     document.getElementById('idForm').classList.add('d-none');
     document.getElementById('start').classList.add('d-none');
     document.getElementById('intro').classList.add('d-none');
@@ -2027,6 +2036,7 @@ document.getElementById('startExcelButton').addEventListener('click', function(e
 });
 //prvious page excel
 function startExcel() {
+    scrollToTop();
     document.getElementById('idForm').classList.add('d-none');
     document.getElementById('start').classList.add('d-none');
     document.getElementById('intro').classList.add('d-none');
@@ -2045,6 +2055,7 @@ document.getElementById('power').addEventListener('click', function(event) {
 });
 
 function startPowerPoint() {
+    scrollToTop();
     document.getElementById('idForm').classList.add('d-none');
     document.getElementById('start').classList.add('d-none');
     document.getElementById('intro').classList.add('d-none');
@@ -2061,6 +2072,7 @@ document.getElementById('startPowerPointButton').addEventListener('click', funct
 });
 //previous powerpoint
 function startPowerPoint() {
+    scrollToTop();
     document.getElementById('idForm').classList.add('d-none');
     document.getElementById('start').classList.add('d-none');
     document.getElementById('intro').classList.add('d-none');
@@ -2080,6 +2092,7 @@ document.getElementById('accessBtn').addEventListener('click', function(event) {
 
 
 function startAccess() {
+    scrollToTop();
     document.getElementById('idForm').classList.add('d-none');
     document.getElementById('start').classList.add('d-none');
     document.getElementById('intro').classList.add('d-none');
@@ -2098,6 +2111,7 @@ document.getElementById('startAccessButton').addEventListener('click', function(
 });
 //previous access
 function startAccess() {
+    scrollToTop();
     document.getElementById('idForm').classList.add('d-none');
     document.getElementById('start').classList.add('d-none');
     document.getElementById('intro').classList.add('d-none');
@@ -2117,6 +2131,7 @@ document.getElementById('accessPrev').addEventListener('click', function(event) 
 });
 
 function  startNetworking() {
+    scrollToTop();
     document.getElementById('idForm').classList.add('d-none');
     document.getElementById('start').classList.add('d-none');
     document.getElementById('intro').classList.add('d-none');
@@ -2131,6 +2146,7 @@ document.getElementById('starNetworkingButton').addEventListener('click', functi
     // Call the startExcel function
     startNetworking();
 });
+
 
 
 // Rest of your existing JavaScript functions...
