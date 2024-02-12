@@ -83,7 +83,7 @@
         #studentIdDisplay {
     position: absolute;
     top: 2%;
-    right: 2%;
+    right: 0%;
     font-weight: bold;
     position:fixed;
 }
@@ -131,7 +131,7 @@
 </head>
 <body>
     <div id="intro" class="sname text-center mt-4">
-        <h1>Ahmad Sufi Sani ICT Initiative Center <br> and Glaxy Warriors</h1>
+        <h1>Ahmad Sufi Sani ICT Initiative Center <br> and Galaxy Warriors</h1>
         <p id="date" class="text-center "></p>
     </div>
 <div class="container-fluid bg-light mt-4 w-75 ml-auto">
@@ -141,7 +141,7 @@
             <!-- Image or content for starting exam -->
             <img src="startexam.jpg" alt="Start Exam Image" class="img-fluid start-exam w-100">
         </div>
-        <div id="idForm" class="col-md-6  text-center mt-auto">
+        <div id="idForm" class="col-md-6  text-center mt-3">
             <!-- Exam form -->
                 <form>
                     <div class="form-group row justify-content-center">
@@ -164,7 +164,7 @@
                     </div>
                     <div class="form-group row justify-content-center">
                         <div class="col-sm-8">
-                            <button type="button" class="btn btn-success btn-block w-50 ml-auto" onclick="startExam()">Start Exam</button>
+                            <button type="button" class="btn btn-success btn-block w-75 mr-auto" onclick="startExam()">Start Exam</button>
                         </div>
                     </div>
                 </form>
@@ -601,7 +601,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary justify-content-center" onclick="startExcel()" id="startExcelButton">Submit and Continue</button>     
+                        <button type="button" class="btn btn-primary justify-content-center" onclick="startExcel()" id="startExcelButton">Next</button>     
             </div>
             <div id="excel" class="container d-none">
                 <h3 class="text-center">Excel</h3>
@@ -2211,7 +2211,7 @@ if (hasEverSubmitted) {
     // Display student ID at the top right corner of the exam page
     const studentIdDisplay = document.createElement('div');
     studentIdDisplay.id = 'studentIdDisplay';
-    studentIdDisplay.textContent = `Student ID: ${idNumber}`;
+    studentIdDisplay.textContent = `ID: ${idNumber}`;
     document.body.appendChild(studentIdDisplay);
 
     // Display full name  at the top left corner of the exam page
